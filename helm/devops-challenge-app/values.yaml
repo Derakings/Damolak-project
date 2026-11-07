@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: ""   # set by the pipeline (ECR URL)
+  tag: ""          # set by the pipeline (build tag)
+
+environment: prod
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
