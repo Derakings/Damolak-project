@@ -1,5 +1,6 @@
 # Copy to terraform.tfvars (git-ignored) and fill in your values
-aws_account_id     = "553737064319" # your PERSONAL account ID
+aws_account_id     = "account ID"
 aws_profile        = "Dera-dev"
 region             = "eu-west-1"
 kubernetes_version = "1.37" # verify with: aws eks describe-cluster-versions
+alert_email        = "email to receive alert"

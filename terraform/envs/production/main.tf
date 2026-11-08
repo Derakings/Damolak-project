@@ -22,3 +22,10 @@ module "eks" {
   node_instance_type = var.node_instance_type
   node_desired_size  = var.node_desired_size
 }
+
+module "monitoring" {
+  source       = "../../modules/monitoring"
+  cluster_name = module.eks.cluster_name
+  alert_email  = var.alert_email
+  depends_on   = [module.eks] # the add-on needs the worker nodes to exist first
+}

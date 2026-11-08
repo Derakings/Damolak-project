@@ -38,3 +38,7 @@ variable "node_desired_size" {
   type    = number
   default = 2
 }
+
+variable "alert_email" {
+  type = string
+}
