@@ -29,3 +29,13 @@ module "monitoring" {
   alert_email  = var.alert_email
   depends_on   = [module.eks] # the add-on needs the worker nodes to exist first
 }
+
+module "jenkins" {
+  source                    = "../../modules/jenkins"
+  name                      = local.name
+  vpc_id                    = module.network.vpc_id
+  subnet_id                 = module.network.public_subnet_ids[0]
+  cluster_name              = module.eks.cluster_name
+  cluster_security_group_id = module.eks.cluster_security_group_id
+  allowed_cidr              = var.jenkins_allowed_cidr
+}

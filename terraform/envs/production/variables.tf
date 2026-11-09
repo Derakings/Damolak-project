@@ -42,3 +42,8 @@ variable "node_desired_size" {
 variable "alert_email" {
   type = string
 }
+
+variable "jenkins_allowed_cidr" {
+  description = "Your IP in CIDR form, e.g. 203.0.113.10/32"
+  type        = string
+}

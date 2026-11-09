@@ -10,3 +10,7 @@ output "kubeconfig_command" {
   description = "Run this to point kubectl at the cluster"
   value       = "aws eks update-kubeconfig --name ${module.eks.cluster_name} --region ${var.region}"
 }
+
+output "jenkins_url" {
+  value = module.jenkins.jenkins_url
+}
