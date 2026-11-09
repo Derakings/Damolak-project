@@ -19,7 +19,7 @@ def root():
     """Main endpoint. Returns version info (and pod name when running on EKS)."""
     logger.info("root endpoint called")
     return {
-        "message": "Hello from the DevOps Challenge app (v2)",
+        "message": "Hello from the DevOps Challenge app from Damolak(v2)",
         "version": APP_VERSION,
         "environment": ENVIRONMENT,
         "hostname": os.getenv("HOSTNAME", "unknown"),
