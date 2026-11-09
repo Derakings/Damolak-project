@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 from fastapi import FastAPI
 
@@ -8,6 +9,7 @@ logger = logging.getLogger("app")
 
 APP_VERSION = os.getenv("APP_VERSION", "dev")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "local")
+START_TIME = time.time()
 
 app = FastAPI(title="DevOps Challenge App")
 
@@ -17,10 +19,21 @@ def root():
     """Main endpoint. Returns version info (and pod name when running on EKS)."""
     logger.info("root endpoint called")
     return {
-        "message": "Hello from the DevOps Challenge app",
+        "message": "Hello from the DevOps Challenge app (v2)",
         "version": APP_VERSION,
         "environment": ENVIRONMENT,
         "hostname": os.getenv("HOSTNAME", "unknown"),
+    }
+
+
+@app.get("/info")
+def info():
+    """Runtime details: which pod answered and how long it has been running."""
+    return {
+        "version": APP_VERSION,
+        "environment": ENVIRONMENT,
+        "hostname": os.getenv("HOSTNAME", "unknown"),
+        "uptime_seconds": int(time.time() - START_TIME),
     }
 
 
