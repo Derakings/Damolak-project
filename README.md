@@ -1,4 +1,4 @@
-# Damolak Technologies Ltd DevOps Challenge: containerised microservice on AWS EKS
+# Damolak Technologies DevOps Challenge: containerised microservice on AWS EKS
 
 A small FastAPI microservice, deployed to **Amazon EKS** with a fully automated path from `git push` to a running release:
 
